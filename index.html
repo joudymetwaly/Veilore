@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +13,7 @@
             --text-secondary: #A8B2D1;   /* Pale Ice Blue Text */
             --accent-blue: #0066FF;      /* Electric Blue for buttons */
             --accent-hover: #3385FF;     /* Lighter button state */
+            --success-green: #2ecc71;
         }
 
         * {
@@ -160,7 +160,6 @@
             position: relative;
         }
 
-        /* You can put live image URLs inside content code like below */
         .photo-placeholder img {
             width: 100%;
             height: 100%;
@@ -227,26 +226,38 @@
             margin-bottom: 1rem;
         }
 
-        /* CONTACT PAGE FORM */
-        .contact-container {
-            max-width: 600px;
+        /* FORMS & INTERACTIVE DESIGN FIELDS */
+        .form-container {
+            max-width: 700px;
             margin: 0 auto;
             background-color: var(--card-bg);
             padding: 3rem;
             border-radius: 8px;
+            border: 1px solid rgba(0, 102, 255, 0.1);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(168, 178, 209, 0.1);
+        }
+
+        .form-group:last-of-type {
+            border-bottom: none;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
-        .form-group input, .form-group textarea {
+        .form-group input[type="text"], 
+        .form-group input[type="number"], 
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 0.8rem;
             background-color: var(--primary-bg);
@@ -256,9 +267,79 @@
             font-size: 1rem;
         }
 
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:focus, .form-group select:focus {
             border-color: var(--accent-blue);
             outline: none;
+        }
+
+        /* RADIO BUTTON STYLING */
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .radio-option input {
+            accent-color: var(--accent-blue);
+            transform: scale(1.2);
+        }
+
+        /* DYNAMIC CONDITIONAL HIDDEN SECTIONS */
+        .conditional-section {
+            display: none;
+            background: rgba(0, 102, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--accent-blue);
+            animation: slideDown 0.3s ease-in-out forwards;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* SUMMARY OVERLAY / RECEIPT SHEET */
+        .summary-box {
+            display: none;
+            margin-top: 2rem;
+            background: #020C1B;
+            border: 2px solid var(--success-green);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .summary-box h3 {
+            color: var(--success-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(168, 178, 209, 0.1);
+        }
+
+        .summary-item span:first-child {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .summary-item span:last-child {
+            color: var(--text-main);
+            font-weight: 600;
         }
 
         footer {
@@ -279,6 +360,7 @@
             <button class="active" onclick="showPage('home')">Home</button>
             <button onclick="showPage('tshirts')">T-Shirts</button>
             <button onclick="showPage('blouses')">Blouses</button>
+            <button onclick="showPage('design-change')">Design Lab</button>
             <button onclick="showPage('fabric')">Fabric Quality</button>
             <button onclick="showPage('contact')">Contact</button>
         </nav>
@@ -292,8 +374,7 @@
                 <button class="btn" onclick="showPage('blouses')">Explore Collections</button>
             </div>
             <div class="photo-placeholder" style="flex: 0.8; height: 450px; border-radius: 8px;">
-    <img src="Vei ore.png" alt="Veilore Banner">
-</div>
+                <img src="Vei ore.png" alt="Veilore Banner">
             </div>
         </div>
     </div>
@@ -352,12 +433,92 @@
         </div>
     </div>
 
-   <div id="fabric" class="page">
+    <div id="design-change" class="page">
+        <h2 style="text-align: center; margin-bottom: 0.5rem;">Veilore Custom Design Lab</h2>
+        <p style="color: var(--text-secondary); text-align: center; margin-bottom: 3rem;">Alter, customize, and secure your structural silhouettes tailored to you.</p>
+
+        <div class="form-container">
+            <form id="customDesignForm" onsubmit="processCustomDesign(event)">
+                
+                <div class="form-group">
+                    <label>1. Select Your Base Technical Model / Design Number</label>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.8rem;">Review catalog photos and select the base pattern design code number you want to tweak:</p>
+                    <input type="number" id="designNumber" placeholder="e.g., 102, 204" required min="1">
+                </div>
+
+                <div class="form-group">
+                    <label>2. Would you like to modify and close an open cut/slit line in the design layout?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="closePart" value="Yes" onchange="toggleFabricSection(true)" required> Yes, close it for complete modesty security
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="closePart" value="No" onchange="toggleFabricSection(false)"> No, keep standard base cut layout
+                        </label>
+                    </div>
+
+                    <div id="fabricColorSection" class="conditional-section">
+                        <label style="font-size: 0.95rem; color: var(--text-main);">Specify the Color of the Patching Fabric:</label>
+                        <input type="text" id="fabricColor" placeholder="e.g., Deep Olive, Soft Ivory, Midnight Navy">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>3. Do you want to print/embroider a custom line art design onto your garment?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="addGraphic" value="Yes" onchange="toggleUploadSection(true)" required> Yes, upload art file
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="addGraphic" value="No" onchange="toggleUploadSection(false)"> No, leave it clean and minimalist
+                        </label>
+                    </div>
+
+                    <div id="fileUploadSection" class="conditional-section">
+                        <label style="font-size: 0.95rem; color: var(--text-main);">Upload Design Mockup from Device:</label>
+                        <input type="file" id="customPhotoFile" accept="image/*" style="color: var(--text-secondary);">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem; margin-top: 1rem;">Submit Specifications</button>
+            </form>
+
+            <div id="selectionSummary" class="summary-box">
+                <h3>✓ Verification Sheet: Confirm Your Order</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Review your design modifications carefully to verify adjustments before locking production:</p>
+                
+                <div class="summary-item">
+                    <span>Selected Design Base:</span>
+                    <span id="sumDesignNum">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Modesty Closure Mod:</span>
+                    <span id="sumCloseMod">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Fabric Overlay Color:</span>
+                    <span id="sumFabricColor">N/A</span>
+                </div>
+                <div class="summary-item">
+                    <span>Custom Graphic Add-on:</span>
+                    <span id="sumGraphicAdd">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Uploaded Artwork Status:</span>
+                    <span id="sumFileStatus">None</span>
+                </div>
+
+                <button class="btn" onclick="alert('Specifications finalized! Sent directly to production room.')" style="background-color: var(--success-green); width: 100%; margin-top: 1.5rem;">Looks Perfect, Confirm Custom Order</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="fabric" class="page">
         <h2>Our Textile Engineering USP</h2>
         <p style="color: var(--text-secondary); margin-bottom: 2rem;">Why Veilore completely eliminates the frustrating need for underlying layers.</p>
         
         <div class="fabric-showcase">
-            
             <div class="fabric-block">
                 <div class="photo-placeholder">
                     <img src="Crepe - AZUL MARINO.jpg" alt="Heavy Crepe Marocain">
@@ -397,7 +558,6 @@
                     <p><strong>Why is it perfect:</strong> It is a thick, premium double-knit fabric. Because it is knitted twice, it has a built-in density that makes it 100% opaque and completely zero see-through. It holds its shape perfectly, smooths out lines, and gives a very professional, high-end look without clinging to the body.</p>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -405,6 +565,13 @@
         <div class="contact-container">
             <h2 style="margin-bottom: 1rem; text-align: center;">Get In Touch</h2>
             <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Have questions about sizing, fabric weight, or orders?</p>
+            
+            <div style="text-align: center; margin-bottom: 2rem; background: rgba(0, 102, 255, 0.1); padding: 1rem; border-radius: 6px; border: 1px solid rgba(0, 102, 255, 0.2);">
+                <p style="color: var(--text-main); font-weight: 600; margin-bottom: 0.5rem;">Reach us via:</p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.3rem;">📧 Email: <a href="mailto:info@veilore.com" style="color: var(--accent-blue); text-decoration: none;">info@veilore.com</a></p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">📞 Phone / WhatsApp: <span style="color: var(--text-main);">+20 1XX XXX XXXX</span></p>
+            </div>
+
             <form onsubmit="event.preventDefault(); alert('Message sent successfully to Veilore!');">
                 <div class="form-group">
                     <label>Full Name</label>
@@ -428,27 +595,66 @@
     </footer>
 
     <script>
+        // PAGE TRANSITION MANAGER
         function showPage(pageId) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
 
-            // Deactivate all navigation buttons
             const buttons = document.querySelectorAll('nav button');
             buttons.forEach(button => button.classList.remove('active'));
 
-            // Show current selected page
             document.getElementById(pageId).classList.add('active');
 
-            // Find matching nav button to highlight it
             const clickedButton = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(pageId));
             if (clickedButton) clickedButton.classList.add('active');
 
-            // Automatically scroll to the top of the window
             window.scrollTo(0, 0);
+        }
+
+        // DYNAMIC CONTENT TOGGLES FOR CUSTOM PAGE
+        function toggleFabricSection(show) {
+            const section = document.getElementById('fabricColorSection');
+            const inputField = document.getElementById('fabricColor');
+            section.style.display = show ? 'block' : 'none';
+            inputField.required = show; // Make required only if open
+        }
+
+        function toggleUploadSection(show) {
+            const section = document.getElementById('fileUploadSection');
+            const fileField = document.getElementById('customPhotoFile');
+            section.style.display = show ? 'block' : 'none';
+            fileField.required = show; // Make required only if open
+        }
+
+        // COMPILE SYSTEM VERIFICATION RESULTS SHEET
+        function processCustomDesign(event) {
+            event.preventDefault();
+
+            // Read Inputs
+            const designNum = document.getElementById('designNumber').value;
+            const closePartVal = document.querySelector('input[name="closePart"]:checked').value;
+            const fabricColorVal = document.getElementById('fabricColor').value;
+            const addGraphicVal = document.querySelector('input[name="addGraphic"]:checked').value;
+            const fileInput = document.getElementById('customPhotoFile');
+
+            // Apply fields to confirmation block
+            document.getElementById('sumDesignNum').innerText = "Model #" + designNum;
+            document.getElementById('sumCloseMod').innerText = closePartVal === "Yes" ? "Yes (Modify to closed panel)" : "No (Keep open split lines)";
+            document.getElementById('sumFabricColor').innerText = closePartVal === "Yes" ? fabricColorVal : "N/A";
+            document.getElementById('sumGraphicAdd').innerText = addGraphicVal === "Yes" ? "Yes (Apply custom print)" : "No graphic modifications";
+            
+            // Check file text name
+            if (addGraphicVal === "Yes" && fileInput.files.length > 0) {
+                document.getElementById('sumFileStatus').innerText = "📎 File Selected: " + fileInput.files[0].name;
+            } else {
+                document.getElementById('sumFileStatus').innerText = "No File Attached";
+            }
+
+            // Unfold verification screen smoothly
+            const summaryBox = document.getElementById('selectionSummary');
+            summaryBox.style.display = 'block';
+            summaryBox.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
 </html>
-
-```
