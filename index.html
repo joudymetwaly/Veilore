@@ -1,14 +1,4 @@
-Here is the complete, updated code for your `index.html` file.
 
-I have added the **Design Lab** page with your exact workflow, customized to match the premium dark blue aesthetic of **Veilore**.
-
-### 🛠️ What to do:
-
-1. Go to your **`index.html`** file on GitHub, click the **Pencil icon (✏️)** to edit it.
-2. Select everything inside the file, delete it, and paste this code instead.
-3. Scroll down and click the green **"Commit changes"** button.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,31 +170,6 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
             left: 0;
         }
 
-        .card-info {
-            padding: 1.5rem;
-        }
-
-        .card-info h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .price {
-            color: var(--accent-blue);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .tag {
-            background: rgba(0, 102, 255, 0.2);
-            color: var(--text-main);
-            font-size: 0.8rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-        }
-
         /* FABRIC QUALITY SPECIFIC DESIGN */
         .fabric-showcase {
             display: flex;
@@ -235,6 +200,42 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
         .fabric-text h2 {
             color: var(--accent-blue);
             margin-bottom: 1rem;
+        }
+
+        /* CUSTOM CATALOG SPECIFIC GRID */
+        .catalog-container {
+            max-width: 900px;
+            margin: 0 auto 3rem auto;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 102, 255, 0.1);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .catalog-card {
+            background: var(--primary-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid rgba(168, 178, 209, 0.1);
+        }
+
+        .catalog-card .photo-placeholder {
+            height: 240px;
+        }
+
+        .catalog-title {
+            padding: 0.6rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: #020C1B;
         }
 
         /* CUSTOM DESIGN LAB FORM STYLING */
@@ -374,6 +375,21 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
             font-size: 1rem;
         }
 
+        .card-info {
+            padding: 1.5rem;
+        }
+
+        .card-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .price {
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
@@ -467,18 +483,43 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
 
     <div id="design-lab" class="page">
         <h2 style="text-align: center; margin-bottom: 0.5rem;">Veilore Design Customization Lab</h2>
-        <p style="color: var(--text-secondary); text-align: center; margin-bottom: 3rem;">Alter layout cuts, colors, and add graphic configurations smoothly.</p>
+        <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2.5rem;">Alter layout cuts, colors, and add graphic configurations smoothly.</p>
+
+        <div class="catalog-container">
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem; color: var(--accent-blue);">1. Base Model Photo Catalog</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Review the base configurations and note down your favorite Design Number below:</p>
+            
+            <div class="catalog-grid">
+                <div class="catalog-card">
+                    <div class="photo-placeholder">
+                        <img src="design1.jpg" alt="Design Model 101">
+                    </div>
+                    <div class="catalog-title">Design #101</div>
+                </div>
+                <div class="catalog-card">
+                    <div class="photo-placeholder">
+                        <img src="design2.jpg" alt="Design Model 102">
+                    </div>
+                    <div class="catalog-title">Design #102</div>
+                </div>
+                <div class="catalog-card">
+                    <div class="photo-placeholder">
+                        <img src="design3.jpg" alt="Design Model 103">
+                    </div>
+                    <div class="catalog-title">Design #103</div>
+                </div>
+            </div>
+        </div>
 
         <div class="form-container">
             <form id="designForm" onsubmit="submitCustomDesign(event)">
                 
                 <div class="form-group">
-                    <label>Design Customization Settings</label>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Choose your base design parameters:</p>
+                    <label>2. Choose Design parameters</label>
                     
                     <div style="margin-bottom: 1rem;">
                         <span style="color: var(--text-secondary); font-size: 0.9rem; display:block; margin-bottom:0.4rem;">Which design number do you want?</span>
-                        <input type="number" id="designNum" placeholder="e.g., 105" required min="1">
+                        <input type="number" id="designNum" placeholder="Type the number from the catalog above (e.g., 101)" required min="1">
                     </div>
 
                     <div>
@@ -488,7 +529,7 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
                 </div>
 
                 <div class="form-group">
-                    <label>Do you want to close the open part in the design?</label>
+                    <label>3. Do you want to close the open part in the design?</label>
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="closeSlit" value="Yes" onchange="toggleSlitColorField(true)" required> Yes
@@ -505,7 +546,7 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
                 </div>
 
                 <div class="form-group">
-                    <label>Do you want to add a certain graphic artwork design to the T-Shirt?</label>
+                    <label>4. Do you want to add a certain graphic artwork design to the T-Shirt?</label>
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="addArt" value="Yes" onchange="toggleArtUploadField(true)" required> Yes
@@ -555,7 +596,6 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
 
                 <button class="btn" onclick="alert('Specifications secured and saved successfully!')" style="background-color: var(--success-green); width: 100%; margin-top: 1.5rem;">Looks Perfect, Finalize Choice</button>
             </div>
-
         </div>
     </div>
 
@@ -611,9 +651,10 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
             <h2 style="margin-bottom: 1rem; text-align: center;">Get In Touch</h2>
             <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Have questions about sizing, fabric weight, or orders?</p>
             
-            <div style="text-align: center; margin-bottom: 2rem; background: rgba(0, 102, 255, 0.1); padding: 1rem; border-radius: 6px; border: 1px solid rgba(0, 102, 255, 0.2);">
-                <p style="color: var(--text-main); font-weight: 600; margin-bottom: 0.5rem;">Reach us via:</p>
-                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.3rem;">📧 Email: <a href="mailto:info@veilore.com" style="color: var(--accent-blue); text-decoration: none;">info@veilore.com</a></p>
+            <div style="text-align: center; margin-bottom: 2rem; background: rgba(0, 102, 255, 0.1); padding: 1.2rem; border-radius: 6px; border: 1px solid rgba(0, 102, 255, 0.2);">
+                <p style="color: var(--text-main); font-weight: 600; margin-bottom: 0.6rem;">Reach us via:</p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.4rem;">📧 Email: <a href="mailto:info@veilore.com" style="color: var(--accent-blue); text-decoration: none;">info@veilore.com</a></p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.4rem;">📸 Instagram: <a href="https://instagram.com/your_username" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">@veilore.apparel</a></p>
                 <p style="color: var(--text-secondary); font-size: 0.95rem;">📞 Phone / WhatsApp: <span style="color: var(--text-main);">+20 1XX XXX XXXX</span></p>
             </div>
 
@@ -640,7 +681,6 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
     </footer>
 
     <script>
-        // TAB SWITCHING MANAGEMENT SYSTEM
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
@@ -656,12 +696,11 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
             window.scrollTo(0, 0);
         }
 
-        // TOCK COLLAPSIBLE BOXES CONDITIONAL VISIBILITY
         function toggleSlitColorField(show) {
             const container = document.getElementById('slitColorContainer');
             const input = document.getElementById('slitFabricColor');
             container.style.display = show ? 'block' : 'none';
-            input.required = show; // Only dynamic requirement rule
+            input.required = show; 
         }
 
         function toggleArtUploadField(show) {
@@ -671,11 +710,9 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
             fileInput.required = show;
         }
 
-        // OUTPUT COMPILATION ACTION ON FORM SUBMISSION
         function submitCustomDesign(event) {
             event.preventDefault();
 
-            // Extract Values
             const designNumberVal = document.getElementById('designNum').value;
             const primaryColorVal = document.getElementById('primaryColor').value;
             const closeSlitVal = document.querySelector('input[name="closeSlit"]:checked').value;
@@ -683,7 +720,6 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
             const addArtVal = document.querySelector('input[name="addArt"]:checked').value;
             const fileInputField = document.getElementById('artDeviceFile');
 
-            // Map values to confirmation template list text contents
             document.getElementById('resDesignNum').innerText = "Model #" + designNumberVal;
             document.getElementById('resPrimaryColor').innerText = primaryColorVal;
             document.getElementById('resCloseMod').innerText = closeSlitVal;
@@ -696,7 +732,6 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
                 document.getElementById('resFileStatus').innerText = "No File Added";
             }
 
-            // Expose compilation summary view window smoothly
             const confBox = document.getElementById('orderConfirmation');
             confBox.style.display = 'block';
             confBox.scrollIntoView({ behavior: 'smooth' });
@@ -706,3 +741,5 @@ I have added the **Design Lab** page with your exact workflow, customized to mat
 </html>
 
 ```
+
+*(Note: Don't forget to change `https://instagram.com/your_username` in the code to your actual Instagram URL link once you have it ready!)*
