@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veilore | Premium Modest Apparel</title>
+    <style>
+        /* BRAND COLOR PALETTE (PREMIUM BLUE SHADES) */
+        :root {
+            --primary-bg: #0A192F;       /* Deep Navy Blue */
+            --card-bg: #112240;          /* Deep Indigo for containers */
+            --text-main: #F4F7FB;        /* Pure Soft Light Text */
+            --text-secondary: #A8B2D1;   /* Pale Ice Blue Text */
+            --accent-blue: #0066FF;      /* Electric Blue for buttons */
+            --accent-hover: #3385FF;     /* Lighter button state */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: #020C1B;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--card-bg);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-left: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav button:hover, nav button.active {
+            color: var(--accent-blue);
+        }
+
+        /* CONTENT PAGES MANAGEMENT */
+        .page {
+            display: none;
+            padding: 4rem 10%;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HERO SECTION (HOME) */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            min-height: 70vh;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .btn {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* GRID LAYOUTS FOR COLLECTIONS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(0, 102, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* PHOTO PLACEHOLDERS */
+        .photo-placeholder {
+            width: 100%;
+            height: 350px;
+            background-color: #1d3557;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            border-bottom: 2px solid var(--primary-bg);
+            position: relative;
+        }
+
+        /* You can put live image URLs inside content code like below */
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .card-info {
+            padding: 1.5rem;
+        }
+
+        .card-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .price {
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .tag {
+            background: rgba(0, 102, 255, 0.2);
+            color: var(--text-main);
+            font-size: 0.8rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FABRIC QUALITY SPECIFIC DESIGN */
+        .fabric-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .fabric-block {
+            display: flex;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .fabric-block .photo-placeholder {
+            flex: 1;
+            height: 300px;
+        }
+
+        .fabric-text {
+            flex: 1.5;
+            padding: 2rem;
+        }
+
+        .fabric-text h2 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* CONTACT PAGE FORM */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary-bg);
+            border: 1px solid var(--text-secondary);
+            border-radius: 4px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-blue);
+            outline: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--card-bg);
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">VEILORE<span>.</span></div>
+        <nav>
+            <button class="active" onclick="showPage('home')">Home</button>
+            <button onclick="showPage('tshirts')">T-Shirts</button>
+            <button onclick="showPage('blouses')">Blouses</button>
+            <button onclick="showPage('fabric')">Fabric Quality</button>
+            <button onclick="showPage('contact')">Contact</button>
+        </nav>
+    </header>
+
+    <div id="home" class="page active">
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Redefining Single-Layer Modesty</h1>
+                <p>Timeless aesthetic designs crafted with high-density, completely opaque fabrics. Zero see-through. Absolute confidence. No extra layers required.</p>
+                <button class="btn" onclick="showPage('blouses')">Explore Collections</button>
+            </div>
+            <div class="photo-placeholder" style="flex: 0.8; height: 450px; border-radius: 8px;">
+    <img src="C:/Users/PC/Downloads/Vei ore.png" alt="Veilore Banner">
+</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tshirts" class="page">
+        <h2>Premium T-Shirt Collection</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Heavyweight luxury essentials built to never translucent.</p>
+        <div class="grid">
+            <div class="card">
+                <div class="photo-placeholder">
+                    <span>[ T-Shirt Product Front Photo ]</span>
+                </div>
+                <div class="card-info">
+                    <span class="tag">240 GSM Heavyweight Cotton</span>
+                    <h3>The Signature Mock-Neck Tee</h3>
+                    <p class="price">450 EGP</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="photo-placeholder">
+                    <span>[ T-Shirt Product Flat-Lay Photo ]</span>
+                </div>
+                <div class="card-info">
+                    <span class="tag">Interlock Knit</span>
+                    <h3>Oversized Relaxed Fit Tee</h3>
+                    <p class="price">480 EGP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="blouses" class="page">
+        <h2>Tailored Blouse Collection</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Elegant silhouettes designed with complete opacity and structure.</p>
+        <div class="grid">
+            <div class="card">
+                <div class="photo-placeholder">
+                    <span>[ Blouse Product Modeled Photo ]</span>
+                </div>
+                <div class="card-info">
+                    <span class="tag">Premium Cotton Poplin</span>
+                    <h3>The Crisp Statement Sleeve Blouse</h3>
+                    <p class="price">750 EGP</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="photo-placeholder">
+                    <span>[ Blouse Detail Zoom-In Photo ]</span>
+                </div>
+                <div class="card-info">
+                    <span class="tag">Heavy Crepe Marocain</span>
+                    <h3>Asymmetric Wrapped Peplum Blouse</h3>
+                    <p class="price">820 EGP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div id="fabric" class="page">
+        <h2>Our Textile Engineering USP</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Why Veilore completely eliminates the frustrating need for underlying layers.</p>
+        
+        <div class="fabric-showcase">
+            
+            <div class="fabric-block">
+                <div class="photo-placeholder">
+                    <img src="C:\Users\PC\Downloads\Crepe - AZUL MARINO.jpg" alt="Heavy Crepe Marocain">
+                </div>
+                <div class="fabric-text">
+                    <h2>1. Heavy Crepe / Crepe Marocain</h2>
+                    <p><strong>Why is it perfect:</strong> Standard crepe can be thin, but Heavy Crepe or Crepe Marocain has a beautiful weight to it. The signature pebble-textured surface naturally diffuses light, eliminating the see-through effect completely. It drapes gracefully, skips over the body instead of sticking, and does not wrinkle easily.</p>
+                </div>
+            </div>
+
+            <div class="fabric-block" style="flex-direction: row-reverse;">
+                <div class="photo-placeholder">
+                    <img src="C:\Users\PC\Downloads\Core Collection Lightweight Silky Cotton Poplin - Cream _ Core Fabrics.jpg" alt="Cotton Poplin">
+                </div>
+                <div class="fabric-text">
+                    <h2>2. Cotton Poplin</h2>
+                    <p><strong>Why is it perfect:</strong> This is a tightly woven, high-thread-count cotton weave. Unlike cheap cotton sheets, high-quality poplin is dense and completely opaque while remaining entirely breathable. It gives blouses that crisp, sharp, "expensive" collar and cuff look.</p>
+                </div>
+            </div>
+
+            <div class="fabric-block">
+                <div class="photo-placeholder">
+                    <img src="C:\Users\PC\Downloads\1pc Pink Velvet Thickened Stage Light-absorbing Background Cloth, Velvet Fabric For Tablecloth, Sportswear, Pajamas, Beach Towel, Etc_.jpg" alt="Premium Velour / Velvet">
+                </div>
+                <div class="fabric-text">
+                    <h2>3. Premium Velour / Velvet</h2>
+                    <p><strong>Why is it perfect:</strong> The plush, thick pile of quality velour blocks all light. It provides maximum coverage and warmth, making it ideal for elegant, premium winter skirts and blouses.</p>
+                </div>
+            </div>
+
+            <div class="fabric-block" style="flex-direction: row-reverse;">
+                <div class="photo-placeholder">
+                    <img src="C:\Users\PC\Downloads\Ponte Roma Double Knit Jersey Fabric OEKO-Tex® _ Pistachio.jpg" alt="Ponte Knit">
+                </div>
+                <div class="fabric-text">
+                    <h2>4. Ponte Knit</h2>
+                    <p><strong>Why is it perfect:</strong> It is a thick, premium double-knit fabric. Because it is knitted twice, it has a built-in density that makes it 100% opaque and completely zero see-through. It holds its shape perfectly, smooths out lines, and gives a very professional, high-end look without clinging to the body.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <div class="contact-container">
+            <h2 style="margin-bottom: 1rem; text-align: center;">Get In Touch</h2>
+            <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Have questions about sizing, fabric weight, or orders?</p>
+            <form onsubmit="event.preventDefault(); alert('Message sent successfully to Veilore!');">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="How can we help you?" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Veilore Apparel. Engineered for Confidence and Modesty.</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Deactivate all navigation buttons
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Show current selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Find matching nav button to highlight it
+            const clickedButton = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(pageId));
+            if (clickedButton) clickedButton.classList.add('active');
+
+            // Automatically scroll to the top of the window
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
+
+```
