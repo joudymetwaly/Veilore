@@ -1,3 +1,14 @@
+Here is the complete, updated code for your `index.html` file.
+
+I have added the **Design Lab** page with your exact workflow, customized to match the premium dark blue aesthetic of **Veilore**.
+
+### 🛠️ What to do:
+
+1. Go to your **`index.html`** file on GitHub, click the **Pencil icon (✏️)** to edit it.
+2. Select everything inside the file, delete it, and paste this code instead.
+3. Scroll down and click the green **"Commit changes"** button.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +24,7 @@
             --text-secondary: #A8B2D1;   /* Pale Ice Blue Text */
             --accent-blue: #0066FF;      /* Electric Blue for buttons */
             --accent-hover: #3385FF;     /* Lighter button state */
-            --success-green: #2ecc71;
+            --success-green: #2ecc71;    /* Verification Green */
         }
 
         * {
@@ -226,12 +237,12 @@
             margin-bottom: 1rem;
         }
 
-        /* FORMS & INTERACTIVE DESIGN FIELDS */
+        /* CUSTOM DESIGN LAB FORM STYLING */
         .form-container {
-            max-width: 700px;
+            max-width: 650px;
             margin: 0 auto;
             background-color: var(--card-bg);
-            padding: 3rem;
+            padding: 2.5rem;
             border-radius: 8px;
             border: 1px solid rgba(0, 102, 255, 0.1);
         }
@@ -248,16 +259,14 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-main);
         }
 
         .form-group input[type="text"], 
-        .form-group input[type="number"], 
-        .form-group textarea,
-        .form-group select {
+        .form-group input[type="number"] {
             width: 100%;
             padding: 0.8rem;
             background-color: var(--primary-bg);
@@ -267,12 +276,12 @@
             font-size: 1rem;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus {
             border-color: var(--accent-blue);
             outline: none;
         }
 
-        /* RADIO BUTTON STYLING */
+        /* RADIO CHOICES STYLING */
         .radio-group {
             display: flex;
             gap: 2rem;
@@ -284,6 +293,8 @@
             align-items: center;
             gap: 0.5rem;
             cursor: pointer;
+            font-weight: 500;
+            color: var(--text-secondary);
         }
 
         .radio-option input {
@@ -291,12 +302,12 @@
             transform: scale(1.2);
         }
 
-        /* DYNAMIC CONDITIONAL HIDDEN SECTIONS */
+        /* DYNAMIC DEPENDENT BOXES */
         .conditional-section {
             display: none;
             background: rgba(0, 102, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 6px;
+            padding: 1.2rem;
+            border-radius: 4px;
             margin-top: 1rem;
             border-left: 4px solid var(--accent-blue);
             animation: slideDown 0.3s ease-in-out forwards;
@@ -307,10 +318,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* SUMMARY OVERLAY / RECEIPT SHEET */
+        /* SUMMARY LIST SHEET */
         .summary-box {
             display: none;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             background: #020C1B;
             border: 2px solid var(--success-green);
             padding: 2rem;
@@ -319,27 +330,48 @@
 
         .summary-box h3 {
             color: var(--success-green);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .summary-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.6rem 0;
+            padding: 0.7rem 0;
             border-bottom: 1px solid rgba(168, 178, 209, 0.1);
         }
 
         .summary-item span:first-child {
             color: var(--text-secondary);
-            font-weight: 500;
         }
 
         .summary-item span:last-child {
             color: var(--text-main);
             font-weight: 600;
+        }
+
+        /* CONTACT PAGE FORM */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .contact-container .form-group {
+            border-bottom: none;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0;
+        }
+
+        .contact-container textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary-bg);
+            border: 1px solid var(--text-secondary);
+            border-radius: 4px;
+            color: white;
+            font-size: 1rem;
         }
 
         footer {
@@ -360,7 +392,7 @@
             <button class="active" onclick="showPage('home')">Home</button>
             <button onclick="showPage('tshirts')">T-Shirts</button>
             <button onclick="showPage('blouses')">Blouses</button>
-            <button onclick="showPage('design-change')">Design Lab</button>
+            <button onclick="showPage('design-lab')">Design Lab</button>
             <button onclick="showPage('fabric')">Fabric Quality</button>
             <button onclick="showPage('contact')">Contact</button>
         </nav>
@@ -433,82 +465,95 @@
         </div>
     </div>
 
-    <div id="design-change" class="page">
-        <h2 style="text-align: center; margin-bottom: 0.5rem;">Veilore Custom Design Lab</h2>
-        <p style="color: var(--text-secondary); text-align: center; margin-bottom: 3rem;">Alter, customize, and secure your structural silhouettes tailored to you.</p>
+    <div id="design-lab" class="page">
+        <h2 style="text-align: center; margin-bottom: 0.5rem;">Veilore Design Customization Lab</h2>
+        <p style="color: var(--text-secondary); text-align: center; margin-bottom: 3rem;">Alter layout cuts, colors, and add graphic configurations smoothly.</p>
 
         <div class="form-container">
-            <form id="customDesignForm" onsubmit="processCustomDesign(event)">
+            <form id="designForm" onsubmit="submitCustomDesign(event)">
                 
                 <div class="form-group">
-                    <label>1. Select Your Base Technical Model / Design Number</label>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.8rem;">Review catalog photos and select the base pattern design code number you want to tweak:</p>
-                    <input type="number" id="designNumber" placeholder="e.g., 102, 204" required min="1">
-                </div>
-
-                <div class="form-group">
-                    <label>2. Would you like to modify and close an open cut/slit line in the design layout?</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="closePart" value="Yes" onchange="toggleFabricSection(true)" required> Yes, close it for complete modesty security
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="closePart" value="No" onchange="toggleFabricSection(false)"> No, keep standard base cut layout
-                        </label>
+                    <label>Design Customization Settings</label>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Choose your base design parameters:</p>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display:block; margin-bottom:0.4rem;">Which design number do you want?</span>
+                        <input type="number" id="designNum" placeholder="e.g., 105" required min="1">
                     </div>
 
-                    <div id="fabricColorSection" class="conditional-section">
-                        <label style="font-size: 0.95rem; color: var(--text-main);">Specify the Color of the Patching Fabric:</label>
-                        <input type="text" id="fabricColor" placeholder="e.g., Deep Olive, Soft Ivory, Midnight Navy">
+                    <div>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display:block; margin-bottom:0.4rem;">Choose your garment primary color:</span>
+                        <input type="text" id="primaryColor" placeholder="e.g., Emerald Green, Cream, Charcoal" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>3. Do you want to print/embroider a custom line art design onto your garment?</label>
+                    <label>Do you want to close the open part in the design?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="addGraphic" value="Yes" onchange="toggleUploadSection(true)" required> Yes, upload art file
+                            <input type="radio" name="closeSlit" value="Yes" onchange="toggleSlitColorField(true)" required> Yes
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="addGraphic" value="No" onchange="toggleUploadSection(false)"> No, leave it clean and minimalist
+                            <input type="radio" name="closeSlit" value="No" onchange="toggleSlitColorField(false)"> No
                         </label>
                     </div>
 
-                    <div id="fileUploadSection" class="conditional-section">
-                        <label style="font-size: 0.95rem; color: var(--text-main);">Upload Design Mockup from Device:</label>
-                        <input type="file" id="customPhotoFile" accept="image/*" style="color: var(--text-secondary);">
+                    <div id="slitColorContainer" class="conditional-section">
+                        <label style="font-size: 0.9rem;">Write the color of the patch fabric:</label>
+                        <input type="text" id="slitFabricColor" placeholder="e.g., Matching Silk Cream, Black Velvet">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you want to add a certain graphic artwork design to the T-Shirt?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="addArt" value="Yes" onchange="toggleArtUploadField(true)" required> Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="addArt" value="No" onchange="toggleArtUploadField(false)"> No
+                        </label>
+                    </div>
+
+                    <div id="artUploadContainer" class="conditional-section">
+                        <label style="font-size: 0.9rem;">Add a photo from your device:</label>
+                        <input type="file" id="artDeviceFile" accept="image/*" style="color: var(--text-secondary);">
                     </div>
                 </div>
 
                 <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem; margin-top: 1rem;">Submit Specifications</button>
             </form>
 
-            <div id="selectionSummary" class="summary-box">
-                <h3>✓ Verification Sheet: Confirm Your Order</h3>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Review your design modifications carefully to verify adjustments before locking production:</p>
+            <div id="orderConfirmation" class="summary-box">
+                <h3>✓ Verification Sheet: Confirm Your Choice</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Please review your choices below to ensure complete accuracy:</p>
                 
                 <div class="summary-item">
-                    <span>Selected Design Base:</span>
-                    <span id="sumDesignNum">-</span>
+                    <span>Design Number Selected:</span>
+                    <span id="resDesignNum">-</span>
                 </div>
                 <div class="summary-item">
-                    <span>Modesty Closure Mod:</span>
-                    <span id="sumCloseMod">-</span>
+                    <span>Primary Garment Color:</span>
+                    <span id="resPrimaryColor">-</span>
                 </div>
                 <div class="summary-item">
-                    <span>Fabric Overlay Color:</span>
-                    <span id="sumFabricColor">N/A</span>
+                    <span>Close Open Section Mod:</span>
+                    <span id="resCloseMod">-</span>
                 </div>
                 <div class="summary-item">
-                    <span>Custom Graphic Add-on:</span>
-                    <span id="sumGraphicAdd">-</span>
+                    <span>Patch Fabric Color:</span>
+                    <span id="resPatchColor">N/A</span>
                 </div>
                 <div class="summary-item">
-                    <span>Uploaded Artwork Status:</span>
-                    <span id="sumFileStatus">None</span>
+                    <span>Add Custom Artwork:</span>
+                    <span id="resAddArt">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Uploaded Photo Status:</span>
+                    <span id="resFileStatus">None</span>
                 </div>
 
-                <button class="btn" onclick="alert('Specifications finalized! Sent directly to production room.')" style="background-color: var(--success-green); width: 100%; margin-top: 1.5rem;">Looks Perfect, Confirm Custom Order</button>
+                <button class="btn" onclick="alert('Specifications secured and saved successfully!')" style="background-color: var(--success-green); width: 100%; margin-top: 1.5rem;">Looks Perfect, Finalize Choice</button>
             </div>
 
         </div>
@@ -595,7 +640,7 @@
     </footer>
 
     <script>
-        // PAGE TRANSITION MANAGER
+        // TAB SWITCHING MANAGEMENT SYSTEM
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
@@ -611,50 +656,53 @@
             window.scrollTo(0, 0);
         }
 
-        // DYNAMIC CONTENT TOGGLES FOR CUSTOM PAGE
-        function toggleFabricSection(show) {
-            const section = document.getElementById('fabricColorSection');
-            const inputField = document.getElementById('fabricColor');
-            section.style.display = show ? 'block' : 'none';
-            inputField.required = show; // Make required only if open
+        // TOCK COLLAPSIBLE BOXES CONDITIONAL VISIBILITY
+        function toggleSlitColorField(show) {
+            const container = document.getElementById('slitColorContainer');
+            const input = document.getElementById('slitFabricColor');
+            container.style.display = show ? 'block' : 'none';
+            input.required = show; // Only dynamic requirement rule
         }
 
-        function toggleUploadSection(show) {
-            const section = document.getElementById('fileUploadSection');
-            const fileField = document.getElementById('customPhotoFile');
-            section.style.display = show ? 'block' : 'none';
-            fileField.required = show; // Make required only if open
+        function toggleArtUploadField(show) {
+            const container = document.getElementById('artUploadContainer');
+            const fileInput = document.getElementById('artDeviceFile');
+            container.style.display = show ? 'block' : 'none';
+            fileInput.required = show;
         }
 
-        // COMPILE SYSTEM VERIFICATION RESULTS SHEET
-        function processCustomDesign(event) {
+        // OUTPUT COMPILATION ACTION ON FORM SUBMISSION
+        function submitCustomDesign(event) {
             event.preventDefault();
 
-            // Read Inputs
-            const designNum = document.getElementById('designNumber').value;
-            const closePartVal = document.querySelector('input[name="closePart"]:checked').value;
-            const fabricColorVal = document.getElementById('fabricColor').value;
-            const addGraphicVal = document.querySelector('input[name="addGraphic"]:checked').value;
-            const fileInput = document.getElementById('customPhotoFile');
+            // Extract Values
+            const designNumberVal = document.getElementById('designNum').value;
+            const primaryColorVal = document.getElementById('primaryColor').value;
+            const closeSlitVal = document.querySelector('input[name="closeSlit"]:checked').value;
+            const slitFabricColorVal = document.getElementById('slitFabricColor').value;
+            const addArtVal = document.querySelector('input[name="addArt"]:checked').value;
+            const fileInputField = document.getElementById('artDeviceFile');
 
-            // Apply fields to confirmation block
-            document.getElementById('sumDesignNum').innerText = "Model #" + designNum;
-            document.getElementById('sumCloseMod').innerText = closePartVal === "Yes" ? "Yes (Modify to closed panel)" : "No (Keep open split lines)";
-            document.getElementById('sumFabricColor').innerText = closePartVal === "Yes" ? fabricColorVal : "N/A";
-            document.getElementById('sumGraphicAdd').innerText = addGraphicVal === "Yes" ? "Yes (Apply custom print)" : "No graphic modifications";
+            // Map values to confirmation template list text contents
+            document.getElementById('resDesignNum').innerText = "Model #" + designNumberVal;
+            document.getElementById('resPrimaryColor').innerText = primaryColorVal;
+            document.getElementById('resCloseMod').innerText = closeSlitVal;
+            document.getElementById('resPatchColor').innerText = closeSlitVal === "Yes" ? slitFabricColorVal : "N/A";
+            document.getElementById('resAddArt').innerText = addArtVal;
             
-            // Check file text name
-            if (addGraphicVal === "Yes" && fileInput.files.length > 0) {
-                document.getElementById('sumFileStatus').innerText = "📎 File Selected: " + fileInput.files[0].name;
+            if (addArtVal === "Yes" && fileInputField.files.length > 0) {
+                document.getElementById('resFileStatus').innerText = "📎 Loaded: " + fileInputField.files[0].name;
             } else {
-                document.getElementById('sumFileStatus').innerText = "No File Attached";
+                document.getElementById('resFileStatus').innerText = "No File Added";
             }
 
-            // Unfold verification screen smoothly
-            const summaryBox = document.getElementById('selectionSummary');
-            summaryBox.style.display = 'block';
-            summaryBox.scrollIntoView({ behavior: 'smooth' });
+            // Expose compilation summary view window smoothly
+            const confBox = document.getElementById('orderConfirmation');
+            confBox.style.display = 'block';
+            confBox.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
 </html>
+
+```
