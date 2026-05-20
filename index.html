@@ -491,7 +491,7 @@
         </div>
     </div>
 
-    <div id="Change Design" class="page">
+    <div id="design-lab" class="page">
         <h2 style="text-align: center; margin-bottom: 0.5rem;">Veilore Design Customization Lab</h2>
         <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2.5rem;">Alter layout cuts, colors, and add graphic configurations smoothly.</p>
 
@@ -516,7 +516,7 @@
                     <div class="photo-placeholder">
                         <img src="design3.jpg" alt="Design Model 3">
                     </div>
-                    <div class="download (9).jpg">Design #3</div>
+                    <div class="catalog-title">Design #3</div>
                 </div>
                 <div class="catalog-card">
                     <div class="photo-placeholder">
@@ -701,7 +701,6 @@
     </footer>
 
     <script>
-        // GLOBALS TO HOLD CURRENT TRANSACTION SPECIFICATIONS
         let currentOrderData = {};
 
         function showPage(pageId) {
@@ -748,7 +747,6 @@
                 uploadedFileName = fileInputField.files[0].name;
             }
 
-            // Store internally for Excel execution later
             currentOrderData = {
                 designNumber: designNumberVal,
                 garmentColor: primaryColorVal,
@@ -758,7 +756,6 @@
                 fileName: uploadedFileName
             };
 
-            // Display in Verification HTML lists
             document.getElementById('resDesignNum').innerText = "Model #" + currentOrderData.designNumber;
             document.getElementById('resPrimaryColor').innerText = currentOrderData.garmentColor;
             document.getElementById('resCloseMod').innerText = currentOrderData.closeSlit;
@@ -771,11 +768,9 @@
             confBox.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // AUTOMATIC EXCEL EXPORT FUNCTION
         function saveToExcelSheet() {
             if (!currentOrderData.designNumber) return;
 
-            // Generate structured CSV column headers and matching row values
             const headers = ["Design Number", "Garment Base Color", "Close Cut Modesty Mod", "Patch Fabric Color", "Add Graphic Artwork", "Attached File Name"];
             const rowValues = [
                 `"${currentOrderData.designNumber}"`,
@@ -786,19 +781,16 @@
                 `"${currentOrderData.fileName}"`
             ];
 
-            // Join together separated by Excel commas
             const csvContent = "data:text/csv;charset=utf-8," 
                 + headers.join(",") + "\n" 
                 + rowValues.join(",");
 
-            // Create temporary virtual link download element 
             const encodedUri = encodeURI(csvContent);
             const linkElement = document.createElement("a");
             linkElement.setAttribute("href", encodedUri);
             linkElement.setAttribute("download", `Veilore_Order_Model_${currentOrderData.designNumber}.csv`);
             document.body.appendChild(linkElement);
 
-            // Execute automated click download trigger safely
             linkElement.click();
             document.body.removeChild(linkElement);
 
@@ -807,4 +799,3 @@
     </script>
 </body>
 </html>
-
