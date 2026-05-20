@@ -415,12 +415,12 @@
     <header>
         <div class="logo">VEILORE<span>.</span></div>
         <nav>
-            <button class="active" onclick="showPage('home')">Home</button>
-            <button onclick="showPage('tshirts')">T-Shirts</button>
-            <button onclick="showPage('blouses')">Blouses</button>
-            <button onclick="showPage('design-lab')">Design Lab</button>
-            <button onclick="showPage('fabric')">Fabric Quality</button>
-            <button onclick="showPage('contact')">Contact</button>
+            <button class="active" onclick="showPage('home', this)">Home</button>
+            <button onclick="showPage('tshirts', this)">T-Shirts</button>
+            <button onclick="showPage('blouses', this)">Blouses</button>
+            <button onclick="showPage('design-lab', this)">Design Lab</button>
+            <button onclick="showPage('fabric', this)">Fabric Quality</button>
+            <button onclick="showPage('contact', this)">Contact</button>
         </nav>
     </header>
 
@@ -703,17 +703,29 @@
     <script>
         let currentOrderData = {};
 
-        function showPage(pageId) {
+        // FIXED: Passing 'btnElement' directly ensures browser changes active styles instantly
+        function showPage(pageId, btnElement) {
+            // 1. Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
 
+            // 2. Show the targeted page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // 3. Update tab highlighting styles
             const buttons = document.querySelectorAll('nav button');
             buttons.forEach(button => button.classList.remove('active'));
 
-            document.getElementById(pageId).classList.add('active');
-
-            const clickedButton = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(pageId));
-            if (clickedButton) clickedButton.classList.add('active');
+            if (btnElement) {
+                btnElement.classList.add('active');
+            } else {
+                // Fallback for button calls inside body links
+                const fallbackBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(`'${pageId}'`));
+                if (fallbackBtn) fallbackBtn.classList.add('active');
+            }
 
             window.scrollTo(0, 0);
         }
