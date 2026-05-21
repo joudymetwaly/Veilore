@@ -478,7 +478,7 @@
             </div>
             <div class="card">
                 <div class="photo-placeholder">
-                    <span>[ T-Shirt Product Flat-Lay Photo ]</span>
+                    <span>"-download (4).jpg"</span>
                 </div>
                 <div class="card-info">
                     <span class="tag">Standard Essential Fit</span>
@@ -511,6 +511,17 @@
                     <span class="tag">Heavy Crepe Marocain</span>
                     <h3>Asymmetric Wrapped Peplum Blouse</h3>
                     <p class="price">820 EGP</p>
+                </div>
+            </div>
+            <!-- ADDED THIRD BLOUSE ITEM HERE -->
+            <div class="card">
+                <div class="photo-placeholder">
+                    <span>"download (8).jpg"</span>
+                </div>
+                <div class="card-info">
+                    <span class="tag">Premium Ponte Double Knit</span>
+                    <h3>Structured High-Neck Modest Tunic Blouse</h3>
+                    <p class="price">890 EGP</p>
                 </div>
             </div>
         </div>
@@ -555,13 +566,13 @@
         <div class="form-container">
             <form id="designForm" onsubmit="submitCustomDesign(event)">
                 
-                <!-- ====== BLOUSE ITEM #1 ====== -->
-                <div class="item-section-header">Configuration: Blouse Item #1</div>
+                <!-- ====== BLOUSE CUSTOMIZATION ITEM ====== -->
+                <div class="item-section-header">Configuration: Custom Blouse Item</div>
                 
                 <div class="form-group">
                     <label>2. Choose Design Template Parameters</label>
                     <div style="margin-bottom: 1rem;">
-                        <span style="color: var(--text-secondary); font-size: 0.9rem; display:block; margin-bottom:0.4rem;">Which design number do you want for Blouse #1? (1 to 4)</span>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display:block; margin-bottom:0.4rem;">Which design number do you want for your Blouse? (1 to 4)</span>
                         <input type="number" id="designNum" placeholder="Type a number from 1 to 4" required min="1" max="4">
                     </div>
                 </div>
@@ -570,10 +581,10 @@
                     <label>3. Do you want to close the open part in the design?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="closeSlit" value="Yes" onchange="toggleSlitColorField(true, '1')" required> Yes
+                            <input type="radio" name="closeSlit" value="Yes" onchange="toggleSlitColorField(true)" required> Yes
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="closeSlit" value="No" onchange="toggleSlitColorField(false, '1')"> No
+                            <input type="radio" name="closeSlit" value="No" onchange="toggleSlitColorField(false)"> No
                         </label>
                     </div>
 
@@ -597,72 +608,16 @@
                     <label>4. Do you want to add a certain graphic artwork design to the T-Shirt?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="addArt" value="Yes" onchange="toggleArtUploadField(true, '1')" required> Yes
+                            <input type="radio" name="addArt" value="Yes" onchange="toggleArtUploadField(true)" required> Yes
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="addArt" value="No" onchange="toggleArtUploadField(false, '1')"> No
+                            <input type="radio" name="addArt" value="No" onchange="toggleArtUploadField(false)"> No
                         </label>
                     </div>
 
                     <div id="artUploadContainer" class="conditional-section">
                         <label style="font-size: 0.9rem;">Add a photo from your device:</label>
                         <input type="file" id="artDeviceFile" accept="image/*" style="color: var(--text-secondary);">
-                    </div>
-                </div>
-
-
-                <!-- ====== BLOUSE ITEM #2 ====== -->
-                <div class="item-section-header">Configuration: Blouse Item #2</div>
-                
-                <div class="form-group">
-                    <label>5. Choose Design Template Parameters (Item 2)</label>
-                    <div style="margin-bottom: 1rem;">
-                        <span style="color: var(--text-secondary); font-size: 0.9rem; display:block; margin-bottom:0.4rem;">Which design number do you want for Blouse #2? (1 to 4)</span>
-                        <input type="number" id="designNum2" placeholder="Type a number from 1 to 4" required min="1" max="4">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>6. Do you want to close the open part in the design?</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="closeSlit2" value="Yes" onchange="toggleSlitColorField(true, '2')" required> Yes
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="closeSlit2" value="No" onchange="toggleSlitColorField(false, '2')"> No
-                        </label>
-                    </div>
-
-                    <div id="slitColorContainer2" class="conditional-section">
-                        <div style="margin-bottom: 1.2rem;">
-                            <span style="color: var(--text-main); font-weight:600; font-size: 0.95rem; display:block; margin-bottom:0.4rem;">➔ Choose your garment primary color:</span>
-                            <select id="primaryColor2">
-                                <option value="" disabled selected>-- Select Color Option --</option>
-                                <option value="Black">Black</option>
-                                <option value="White">White</option>
-                            </select>
-                        </div>
-                        <div>
-                            <span style="color: var(--text-main); font-weight:600; font-size: 0.95rem; display:block; margin-bottom:0.4rem;">➔ Write the color/type of the patch fabric:</span>
-                            <input type="text" id="slitFabricColor2" placeholder="e.g., Matching Silk Cream, Structured Black Velvet">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>7. Do you want to add a certain graphic artwork design to the T-Shirt?</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="addArt2" value="Yes" onchange="toggleArtUploadField(true, '2')" required> Yes
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="addArt2" value="No" onchange="toggleArtUploadField(false, '2')"> No
-                        </label>
-                    </div>
-
-                    <div id="artUploadContainer2" class="conditional-section">
-                        <label style="font-size: 0.9rem;">Add a photo from your device:</label>
-                        <input type="file" id="artDeviceFile2" accept="image/*" style="color: var(--text-secondary);">
                     </div>
                 </div>
 
@@ -674,21 +629,13 @@
                 <h3>✓ Specifications Calculated Successfully!</h3>
                 <p style="color: var(--text-secondary); font-size:0.9rem;">Below is the calculated structural layout manifest details data:</p>
                 
-                <div class="summary-column-title">Blouse Item #1 Configuration</div>
+                <div class="summary-column-title">Blouse Item Configuration</div>
                 <div class="summary-item"><span>Design Model Template</span><span id="resDesignNum">-</span></div>
                 <div class="summary-item"><span>Closed Slit Requested</span><span id="resCloseMod">-</span></div>
                 <div class="summary-item"><span>Primary Base Color</span><span id="resPrimaryColor">-</span></div>
                 <div class="summary-item"><span>Patch Material Type</span><span id="resPatchColor">-</span></div>
                 <div class="summary-item"><span>Graphic Artwork Attached</span><span id="resAddArt">-</span></div>
                 <div class="summary-item"><span>Upload File Source Name</span><span id="resFileStatus">-</span></div>
-
-                <div class="summary-column-title">Blouse Item #2 Configuration</div>
-                <div class="summary-item"><span>Design Model Template</span><span id="resDesignNum2">-</span></div>
-                <div class="summary-item"><span>Closed Slit Requested</span><span id="resCloseMod2">-</span></div>
-                <div class="summary-item"><span>Primary Base Color</span><span id="resPrimaryColor2">-</span></div>
-                <div class="summary-item"><span>Patch Material Type</span><span id="resPatchColor2">-</span></div>
-                <div class="summary-item"><span>Graphic Artwork Attached</span><span id="resAddArt2">-</span></div>
-                <div class="summary-item"><span>Upload File Source Name</span><span id="resFileStatus2">-</span></div>
             </div>
         </div>
     </div>
@@ -799,26 +746,19 @@
             window.scrollTo(0, 0);
         }
 
-        function toggleSlitColorField(show, suffix) {
-            const containerId = suffix === '1' ? 'slitColorContainer' : 'slitColorContainer2';
-            const colorSelectId = suffix === '1' ? 'primaryColor' : 'primaryColor2';
-            const fabricInputId = suffix === '1' ? 'slitFabricColor' : 'slitFabricColor2';
-            
-            const container = document.getElementById(containerId);
-            const colorSelect = document.getElementById(colorSelectId);
-            const fabricInput = document.getElementById(fabricInputId);
+        function toggleSlitColorField(show) {
+            const container = document.getElementById('slitColorContainer');
+            const colorSelect = document.getElementById('primaryColor');
+            const fabricInput = document.getElementById('slitFabricColor');
             
             container.style.display = show ? 'block' : 'none';
             colorSelect.required = show; 
             fabricInput.required = show; 
         }
 
-        function toggleArtUploadField(show, suffix) {
-            const containerId = suffix === '1' ? 'artUploadContainer' : 'artUploadContainer2';
-            const fileInputId = suffix === '1' ? 'artDeviceFile' : 'artDeviceFile2';
-            
-            const container = document.getElementById(containerId);
-            const fileInput = document.getElementById(fileInputId);
+        function toggleArtUploadField(show) {
+            const container = document.getElementById('artUploadContainer');
+            const fileInput = document.getElementById('artDeviceFile');
             
             container.style.display = show ? 'block' : 'none';
             fileInput.required = show;
@@ -827,7 +767,7 @@
         function submitCustomDesign(event) {
             event.preventDefault();
 
-            // Item 1 Elements
+            // Item 1 Elements Extraction Only
             const designNumberVal = document.getElementById('designNum').value;
             const closeSlitVal = document.querySelector('input[name="closeSlit"]:checked').value;
             const primaryColorVal = document.getElementById('primaryColor').value;
@@ -840,51 +780,23 @@
                 uploadedFileName = fileInputField.files[0].name;
             }
 
-            // Item 2 Elements
-            const designNumberVal2 = document.getElementById('designNum2').value;
-            const closeSlitVal2 = document.querySelector('input[name="closeSlit2"]:checked').value;
-            const primaryColorVal2 = document.getElementById('primaryColor2').value;
-            const slitFabricColorVal2 = document.getElementById('slitFabricColor2').value;
-            const addArtVal2 = document.querySelector('input[name="addArt2"]:checked').value;
-            const fileInputField2 = document.getElementById('artDeviceFile2');
-
-            let uploadedFileName2 = "None";
-            if (addArtVal2 === "Yes" && fileInputField2.files.length > 0) {
-                uploadedFileName2 = fileInputField2.files[0].name;
-            }
-
-            // Save combined order data globally
+            // Save single order item data globally
             currentOrderData = {
                 designNumber: designNumberVal,
                 closeSlit: closeSlitVal,
                 garmentColor: closeSlitVal === "Yes" ? primaryColorVal : "N/A",
                 patchColor: closeSlitVal === "Yes" ? slitFabricColorVal : "N/A",
                 addArtwork: addArtVal,
-                fileName: uploadedFileName,
-                
-                designNumber2: designNumberVal2,
-                closeSlit2: closeSlitVal2,
-                garmentColor2: closeSlitVal2 === "Yes" ? primaryColorVal2 : "N/A",
-                patchColor2: closeSlitVal2 === "Yes" ? slitFabricColorVal2 : "N/A",
-                addArtwork2: addArtVal2,
-                fileName2: uploadedFileName2
+                fileName: uploadedFileName
             };
 
-            // Update Item 1 UI Display
+            // Update UI Output summary display blocks
             document.getElementById('resDesignNum').innerText = "Model #" + currentOrderData.designNumber;
             document.getElementById('resPrimaryColor').innerText = currentOrderData.garmentColor;
             document.getElementById('resCloseMod').innerText = currentOrderData.closeSlit;
             document.getElementById('resPatchColor').innerText = currentOrderData.patchColor;
             document.getElementById('resAddArt').innerText = currentOrderData.addArtwork;
             document.getElementById('resFileStatus').innerText = addArtVal === "Yes" ? "📎 " + uploadedFileName : "No File Added";
-
-            // Update Item 2 UI Display
-            document.getElementById('resDesignNum2').innerText = "Model #" + currentOrderData.designNumber2;
-            document.getElementById('resPrimaryColor2').innerText = currentOrderData.garmentColor2;
-            document.getElementById('resCloseMod2').innerText = currentOrderData.closeSlit2;
-            document.getElementById('resPatchColor2').innerText = currentOrderData.patchColor2;
-            document.getElementById('resAddArt2').innerText = currentOrderData.addArtwork2;
-            document.getElementById('resFileStatus2').innerText = addArtVal2 === "Yes" ? "📎 " + uploadedFileName2 : "No File Added";
 
             const confBox = document.getElementById('orderConfirmation');
             confBox.style.display = 'block';
@@ -893,3 +805,5 @@
     </script>
 </body>
 </html>
+
+```
