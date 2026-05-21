@@ -467,7 +467,8 @@
         <div class="grid">
             <div class="card">
                 <div class="photo-placeholder">
-                    <span>[ T-Shirt Product Front Photo ]</span>
+                    <span>"download (7).jpg"</span>
+                    <img src="download (7).jpg" alt="Heavy Crepe Marocain">
                 </div>
                 <div class="card-info">
                     <span class="tag">240 GSM Heavyweight Cotton</span>
@@ -480,7 +481,7 @@
                     <span>[ T-Shirt Product Flat-Lay Photo ]</span>
                 </div>
                 <div class="card-info">
-                    <span class="tag">Interlock Knit</span>
+                    <span class="tag">Standard Essential Fit</span>
                     <h3>Oversized Relaxed Fit Tee</h3>
                     <p class="price">480 EGP</p>
                 </div>
@@ -494,7 +495,7 @@
         <div class="grid">
             <div class="card">
                 <div class="photo-placeholder">
-                    <span>[ Blouse Product Modeled Photo ]</span>
+                    <span>"download (5).jpg"</span>
                 </div>
                 <div class="card-info">
                     <span class="tag">Premium Cotton Poplin</span>
@@ -504,7 +505,7 @@
             </div>
             <div class="card">
                 <div class="photo-placeholder">
-                    <span>[ Blouse Detail Zoom-In Photo ]</span>
+                    <span>"download (6).jpg"</span>
                 </div>
                 <div class="card-info">
                     <span class="tag">Heavy Crepe Marocain</span>
@@ -554,6 +555,7 @@
         <div class="form-container">
             <form id="designForm" onsubmit="submitCustomDesign(event)">
                 
+                <!-- ====== BLOUSE ITEM #1 ====== -->
                 <div class="item-section-header">Configuration: Blouse Item #1</div>
                 
                 <div class="form-group">
@@ -609,10 +611,11 @@
                 </div>
 
 
-                <div class="item-section-header" style="margin-top: 3.5rem;">Configuration: Blouse Item #2</div>
+                <!-- ====== BLOUSE ITEM #2 ====== -->
+                <div class="item-section-header">Configuration: Blouse Item #2</div>
                 
                 <div class="form-group">
-                    <label>2. Choose Design Template Parameters</label>
+                    <label>5. Choose Design Template Parameters (Item 2)</label>
                     <div style="margin-bottom: 1rem;">
                         <span style="color: var(--text-secondary); font-size: 0.9rem; display:block; margin-bottom:0.4rem;">Which design number do you want for Blouse #2? (1 to 4)</span>
                         <input type="number" id="designNum2" placeholder="Type a number from 1 to 4" required min="1" max="4">
@@ -620,7 +623,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>3. Do you want to close the open part in the design?</label>
+                    <label>6. Do you want to close the open part in the design?</label>
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="closeSlit2" value="Yes" onchange="toggleSlitColorField(true, '2')" required> Yes
@@ -647,7 +650,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>4. Do you want to add a certain graphic artwork design to the T-Shirt?</label>
+                    <label>7. Do you want to add a certain graphic artwork design to the T-Shirt?</label>
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="addArt2" value="Yes" onchange="toggleArtUploadField(true, '2')" required> Yes
@@ -663,66 +666,29 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem; margin-top: 2rem;">Submit Specifications</button>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Generate Custom Specifications</button>
             </form>
 
+            <!-- ====== SUMMARY BOX REALTIME REVIEWS ====== -->
             <div id="orderConfirmation" class="summary-box">
-                <h3>✓ Verification Sheet: Confirm Your Choice</h3>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Please review your choices below to ensure complete accuracy:</p>
+                <h3>✓ Specifications Calculated Successfully!</h3>
+                <p style="color: var(--text-secondary); font-size:0.9rem;">Below is the calculated structural layout manifest details data:</p>
                 
-                <div class="summary-column-title">Blouse Item #1 Specs</div>
-                <div class="summary-item">
-                    <span>Design Number Selected:</span>
-                    <span id="resDesignNum">-</span>
-                </div>
-                <div class="summary-item">
-                    <span>Primary Garment Color:</span>
-                    <span id="resPrimaryColor">-</span>
-                </div>
-                <div class="summary-item">
-                    <span>Close Open Section Mod:</span>
-                    <span id="resCloseMod">-</span>
-                </div>
-                <div class="summary-item">
-                    <span>Patch Fabric Color:</span>
-                    <span id="resPatchColor">N/A</span>
-                </div>
-                <div class="summary-item">
-                    <span>Add Custom Artwork:</span>
-                    <span id="resAddArt">-</span>
-                </div>
-                <div class="summary-item">
-                    <span>Uploaded Photo Status:</span>
-                    <span id="resFileStatus">None</span>
-                </div>
+                <div class="summary-column-title">Blouse Item #1 Configuration</div>
+                <div class="summary-item"><span>Design Model Template</span><span id="resDesignNum">-</span></div>
+                <div class="summary-item"><span>Closed Slit Requested</span><span id="resCloseMod">-</span></div>
+                <div class="summary-item"><span>Primary Base Color</span><span id="resPrimaryColor">-</span></div>
+                <div class="summary-item"><span>Patch Material Type</span><span id="resPatchColor">-</span></div>
+                <div class="summary-item"><span>Graphic Artwork Attached</span><span id="resAddArt">-</span></div>
+                <div class="summary-item"><span>Upload File Source Name</span><span id="resFileStatus">-</span></div>
 
-                <div class="summary-column-title">Blouse Item #2 Specs</div>
-                <div class="summary-item">
-                    <span>Design Number Selected:</span>
-                    <span id="resDesignNum2">-</span>
-                </div>
-                <div class="summary-item">
-                    <span>Primary Garment Color:</span>
-                    <span id="resPrimaryColor2">-</span>
-                </div>
-                <div class="summary-item">
-                    <span>Close Open Section Mod:</span>
-                    <span id="resCloseMod2">-</span>
-                </div>
-                <div class="summary-item">
-                    <span>Patch Fabric Color:</span>
-                    <span id="resPatchColor2">N/A</span>
-                </div>
-                <div class="summary-item">
-                    <span>Add Custom Artwork:</span>
-                    <span id="resAddArt2">-</span>
-                </div>
-                <div class="summary-item">
-                    <span>Uploaded Photo Status:</span>
-                    <span id="resFileStatus2">None</span>
-                </div>
-
-                <button class="btn" onclick="saveToExcelSheet()" style="background-color: var(--success-green); width: 100%; margin-top: 2rem;">Looks Perfect, Save Order To Excel</button>
+                <div class="summary-column-title">Blouse Item #2 Configuration</div>
+                <div class="summary-item"><span>Design Model Template</span><span id="resDesignNum2">-</span></div>
+                <div class="summary-item"><span>Closed Slit Requested</span><span id="resCloseMod2">-</span></div>
+                <div class="summary-item"><span>Primary Base Color</span><span id="resPrimaryColor2">-</span></div>
+                <div class="summary-item"><span>Patch Material Type</span><span id="resPatchColor2">-</span></div>
+                <div class="summary-item"><span>Graphic Artwork Attached</span><span id="resAddArt2">-</span></div>
+                <div class="summary-item"><span>Upload File Source Name</span><span id="resFileStatus2">-</span></div>
             </div>
         </div>
     </div>
@@ -812,24 +778,20 @@
         let currentOrderData = {};
 
         function showPage(pageId, btnElement) {
-            // 1. Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
 
-            // 2. Show the targeted page
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
                 targetPage.classList.add('active');
             }
 
-            // 3. Update tab highlighting styles
             const buttons = document.querySelectorAll('nav button');
             buttons.forEach(button => button.classList.remove('active'));
 
             if (btnElement) {
                 btnElement.classList.add('active');
             } else {
-                // Fallback for button calls inside body links
                 const fallbackBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(`'${pageId}'`));
                 if (fallbackBtn) fallbackBtn.classList.add('active');
             }
@@ -928,52 +890,6 @@
             confBox.style.display = 'block';
             confBox.scrollIntoView({ behavior: 'smooth' });
         }
-
-        function saveToExcelSheet() {
-            if (!currentOrderData.designNumber || !currentOrderData.designNumber2) return;
-
-            const headers = [
-                "Item Specification", "Design Number", "Garment Base Color", 
-                "Close Cut Modesty Mod", "Patch Fabric Color", "Add Graphic Artwork", "Attached File Name"
-            ];
-            
-            const rowValuesItem1 = [
-                `"Blouse Item #1"`,
-                `"${currentOrderData.designNumber}"`,
-                `"${currentOrderData.garmentColor}"`,
-                `"${currentOrderData.closeSlit}"`,
-                `"${currentOrderData.patchColor}"`,
-                `"${currentOrderData.addArtwork}"`,
-                `"${currentOrderData.fileName}"`
-            ];
-
-            const rowValuesItem2 = [
-                `"Blouse Item #2"`,
-                `"${currentOrderData.designNumber2}"`,
-                `"${currentOrderData.garmentColor2}"`,
-                `"${currentOrderData.closeSlit2}"`,
-                `"${currentOrderData.patchColor2}"`,
-                `"${currentOrderData.addArtwork2}"`,
-                `"${currentOrderData.fileName2}"`
-            ];
-
-            const csvContent = "data:text/csv;charset=utf-8," 
-                + headers.join(",") + "\n" 
-                + rowValuesItem1.join(",") + "\n"
-                + rowValuesItem2.join(",");
-
-            const encodedUri = encodeURI(csvContent);
-            const linkElement = document.createElement("a");
-            linkElement.setAttribute("href", encodedUri);
-            linkElement.setAttribute("download", `Veilore_Multi_Order.csv`);
-            document.body.appendChild(linkElement);
-
-            linkElement.click();
-            document.body.removeChild(linkElement);
-
-            alert("Success! Your design configuration has been saved and downloaded as an Excel spreadsheet file.");
-        }
     </script>
 </body>
 </html>
-
