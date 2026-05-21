@@ -150,11 +150,11 @@
             transform: translateY(-5px);
         }
 
-        /* PHOTO PLACEHOLDERS */
+        /* PHOTO PLACEHOLDERS - UPDATED TO SHOW FULL IMAGES */
         .photo-placeholder {
             width: 100%;
             height: 350px;
-            background-color: #1d3557;
+            background-color: var(--card-bg); /* Matched to container color for seamless containment */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -167,7 +167,7 @@
         .photo-placeholder img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Shows the full image without cropping out details */
             position: absolute;
             top: 0;
             left: 0;
@@ -232,6 +232,7 @@
 
         .catalog-card .photo-placeholder {
             height: 240px;
+            background-color: var(--primary-bg);
         }
 
         .catalog-title {
@@ -467,8 +468,7 @@
         <div class="grid">
             <div class="card">
                 <div class="photo-placeholder">
-                    <span>"download (7).jpg"</span>
-                    <img src="download (7).jpg" alt="Heavy Crepe Marocain">
+                    <img src="download (7).jpg" alt="The Signature Mock-Neck Tee">
                 </div>
                 <div class="card-info">
                     <span class="tag">240 GSM Heavyweight Cotton</span>
@@ -478,8 +478,7 @@
             </div>
             <div class="card">
                 <div class="photo-placeholder">
-                    <span>"download (4).jpg"</span>
-                    <img src="download (4).jpg" alt="Heavy Crepe Marocain">
+                    <img src="download (4).jpg" alt="Oversized Relaxed Fit Tee">
                 </div>
                 <div class="card-info">
                     <span class="tag">Standard Essential Fit</span>
@@ -496,8 +495,7 @@
         <div class="grid">
             <div class="card">
                 <div class="photo-placeholder">
-                    <span>"download (5).jpg"</span>
-                    <img src="download (5).jpg" alt="Heavy Crepe Marocain">
+                    <img src="download (5).jpg" alt="The Crisp Statement Sleeve Blouse">
                 </div>
                 <div class="card-info">
                     <span class="tag">Premium Cotton Poplin</span>
@@ -507,8 +505,7 @@
             </div>
             <div class="card">
                 <div class="photo-placeholder">
-                    <span>"download (6).jpg"</span>
-                    <img src="download (6).jpg" alt="Heavy Crepe Marocain">
+                    <img src="download (6).jpg" alt="Asymmetric Wrapped Peplum Blouse">
                 </div>
                 <div class="card-info">
                     <span class="tag">Heavy Crepe Marocain</span>
@@ -516,11 +513,9 @@
                     <p class="price">820 EGP</p>
                 </div>
             </div>
-            <!-- ADDED THIRD BLOUSE ITEM HERE -->
             <div class="card">
                 <div class="photo-placeholder">
-                    <span>"download (8).jpg"</span>
-                    <img src="download (8).jpg" alt="Heavy Crepe Marocain">
+                    <img src="download (8).jpg" alt="Structured High-Neck Modest Tunic Blouse">
                 </div>
                 <div class="card-info">
                     <span class="tag">Premium Ponte Double Knit</span>
@@ -570,7 +565,6 @@
         <div class="form-container">
             <form id="designForm" onsubmit="submitCustomDesign(event)">
                 
-                <!-- ====== BLOUSE CUSTOMIZATION ITEM ====== -->
                 <div class="item-section-header">Configuration: Custom Blouse Item</div>
                 
                 <div class="form-group">
@@ -628,7 +622,6 @@
                 <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Generate Custom Specifications</button>
             </form>
 
-            <!-- ====== SUMMARY BOX REALTIME REVIEWS ====== -->
             <div id="orderConfirmation" class="summary-box">
                 <h3>✓ Specifications Calculated Successfully!</h3>
                 <p style="color: var(--text-secondary); font-size:0.9rem;">Below is the calculated structural layout manifest details data:</p>
@@ -771,7 +764,6 @@
         function submitCustomDesign(event) {
             event.preventDefault();
 
-            // Item 1 Elements Extraction Only
             const designNumberVal = document.getElementById('designNum').value;
             const closeSlitVal = document.querySelector('input[name="closeSlit"]:checked').value;
             const primaryColorVal = document.getElementById('primaryColor').value;
@@ -784,7 +776,6 @@
                 uploadedFileName = fileInputField.files[0].name;
             }
 
-            // Save single order item data globally
             currentOrderData = {
                 designNumber: designNumberVal,
                 closeSlit: closeSlitVal,
@@ -794,7 +785,6 @@
                 fileName: uploadedFileName
             };
 
-            // Update UI Output summary display blocks
             document.getElementById('resDesignNum').innerText = "Model #" + currentOrderData.designNumber;
             document.getElementById('resPrimaryColor').innerText = currentOrderData.garmentColor;
             document.getElementById('resCloseMod').innerText = currentOrderData.closeSlit;
@@ -809,5 +799,3 @@
     </script>
 </body>
 </html>
-
-```
